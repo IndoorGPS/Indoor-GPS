@@ -42,6 +42,7 @@ public class MainActivity extends Activity {
     private int ratio = 1;
     private int floorplan = 0;
     private int qstate = 0;
+    private boolean firsttime = true;
 	
 	
 	@Override
@@ -63,6 +64,9 @@ public class MainActivity extends Activity {
         EngineCommon.Initialize(this, dir);	
     	//====================================================================================================
 		InitMap();
+
+        firsttime = true;
+		Toast.makeText(MainActivity.this, "Loading ... (%0)",Toast.LENGTH_SHORT).show();	
 	}
 	
     @Override
@@ -193,6 +197,11 @@ public class MainActivity extends Activity {
 			qstate = param.qstate;
 			
 			if (qstate == 100) {
+				if (firsttime) {
+					firsttime = false;
+					Toast.makeText(MainActivity.this, "Loading ... (%100)",Toast.LENGTH_SHORT).show();	
+				}
+				
 				/* SDK will output position based on original photo size */
 				/* since we down sample original photo size by value "ratio, the distance should also be down shrinked  */
 				DrawPosition(current_position.x/ratio, current_position.y/ratio);	 
