@@ -60,6 +60,7 @@ public class MainActivity extends Activity {
 		// Ex. 
 		// if the created folder is in "/storage/emulated/0/Ladiesman217/",
 		// then the input folder string should be "/storage/emulated/0"
+		// herein, "Ladiesman217/" is always appended to input folder
         String dir = Environment.getExternalStorageDirectory().getAbsolutePath();
         EngineCommon.Initialize(this, dir);	
     	//====================================================================================================
